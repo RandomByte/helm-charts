@@ -8,3 +8,4 @@
 # Local Helm values files
 prod-values.yaml
 dev-values.yaml
+config.yaml
