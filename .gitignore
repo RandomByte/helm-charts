@@ -1,0 +1,10 @@
+# macOS system files
+.DS_Store
+
+# Helm chart automated files
+/charts/*/charts
+.idea
+
+# Local Helm values files
+prod-values.yaml
+dev-values.yaml
