@@ -1,6 +1,6 @@
 apiVersion: v2
 name: hercules
-description: Opinionated collection of tools to produce and store various metrics in my home environment
+description: Produce and store various metrics in a home environment
 
 # A chart can be either an 'application' or a 'library' chart.
 #
