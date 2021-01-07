@@ -2,7 +2,7 @@
 
 > An Opinionated Collection of Tools to Produce and Store Various Metrics in a Home Environment
 
-**⚠️ Many Docker images used in this project are built exclusively for the armhf architecture (Raspberry Pi et al.)**
+**⚠️ Some Docker images used in this project are built exclusively for the armhf architecture (Raspberry Pi et al.)**
 
 ## Prerequisites
 1. Have a running Kubernetes cluster on one or more Raspberry Pis
@@ -73,7 +73,7 @@ Modules that are either running within the Kubernetes cluster or on external dev
 1. In the file `config.yaml`, replace all variables with the appropriate values
 1. Create a helm release named "hercules" (or upgrade an existing one) and deploy it via kubectl
     ``` sh
-    helm upgrade hercules . -f config.yaml --install --atomic
+    helm upgrade hercules . -f config.yaml --install # --atomic
     ```
 
 ## License
