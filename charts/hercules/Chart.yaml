@@ -16,3 +16,8 @@ type: application
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
 version: 1.0.0
+
+home: https://github.com/RandomByte/helm-charts/tree/main/charts/hercules
+maintainers:
+  - name: Merlin Beutlberger
+    email: r@ndombyte.net
