@@ -1,4 +1,4 @@
-# [Hercules](https://github.com/RandomByte/helm-charts/blob/master/charts/hercules)
+# Hercules
 
 > An Opinionated Collection of Tools to Produce and Store Various Metrics in a Home Environment
 
@@ -35,6 +35,7 @@ helm install hercules randombyte/hercules -f config.yaml
 ### Upgrade
 To apply changes to the running cluster execute:
 ```sh
+helm repo update
 helm upgrade --cleanup-on-fail hercules randombyte/hercules -f config.yaml
 ```
 
