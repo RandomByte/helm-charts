@@ -1,0 +1,23 @@
+name: Pull Docker Images
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '32 15 4 */2 *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Login to Docker
+      run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Pull Docker images
+      run: |
+        docker pull randombyte/mqtt-sony-bravia
+        docker pull randombyte/mqtt-traffic
+        docker pull randombyte/mqtt-online-check
+        docker pull randombyte/armhf-http2mqtt
