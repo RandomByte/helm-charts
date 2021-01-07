@@ -36,7 +36,7 @@ helm install hercules randombyte/hercules -f config.yaml
 To apply changes to the running cluster execute:
 ```sh
 helm repo update
-helm upgrade --cleanup-on-fail hercules randombyte/hercules -f config.yaml
+helm upgrade hercules randombyte/hercules -f config.yaml --cleanup-on-fail
 ```
 
 ### Uninstall
@@ -71,9 +71,9 @@ Modules that are either running within the Kubernetes cluster or on external dev
     cp values.yaml config.yaml
     ```
 1. In the file `config.yaml`, replace all variables with the appropriate values
-1. Create a helm release named "hercules" and deploy it via kubectl
+1. Create a helm release named "hercules" (or upgrade an existing one) and deploy it via kubectl
     ``` sh
-    helm install -f config.yaml hercules .
+    helm upgrade hercules . -f config.yaml --install --atomic
     ```
 
 ## License
