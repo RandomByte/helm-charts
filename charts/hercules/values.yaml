@@ -26,6 +26,7 @@ mqttServices:
 
   internet:
     enabled: true
+    speedtest: true
     measurementName: "home-internet"
     topicPrefix: "Home/Internet/"
     configuration:
