@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   hercules:
   - apiVersion: v2
+    created: "2021-05-24T21:41:04.12989922Z"
+    description: Produce and store various metrics in a home environment
+    digest: 0bcc7ff4f717d5a0ec5d549e851467fde626f816a9b3b3dfb0e77de95dfb7b44
+    home: https://github.com/RandomByte/helm-charts/tree/main/charts/hercules
+    maintainers:
+    - email: r@ndombyte.net
+      name: Merlin Beutlberger
+    name: hercules
+    type: application
+    urls:
+    - https://github.com/RandomByte/helm-charts/releases/download/hercules-1.0.9/hercules-1.0.9.tgz
+    version: 1.0.9
+  - apiVersion: v2
     created: "2021-05-24T20:17:46.411810711Z"
     description: Produce and store various metrics in a home environment
     digest: dff0c0aeea4a659543fbe49f90f14f68f3cee98f32597e0e239d9e6ed9f8e40d
