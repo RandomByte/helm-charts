@@ -56,7 +56,7 @@ data:
     [[processors.override]]
       order = 1
       alias = "traffic-override"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       name_override = {{ .Values.mqttServices.traffic.measurementName | quote }}
       [processors.override.tagpass]
         topic = ["{{ .Values.mqttServices.traffic.topicPrefix }}*"]
@@ -64,7 +64,7 @@ data:
     [[processors.regex]]
       order = 2
       alias = "traffic-regex"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       [[processors.regex.fields]]
         key = "value"
         pattern = "^(.*);[0-9]+$"
@@ -80,7 +80,7 @@ data:
     [[processors.converter]]
       order = 3
       alias = "traffic-converter"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       tagexclude = ["topic"]
       [processors.converter.fields]
         tag = ["route"]
@@ -95,7 +95,7 @@ data:
     [[processors.override]]
       order = 10
       alias = "internet-override"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       name_override = {{ .Values.mqttServices.internet.measurementName | quote }}
       [processors.override.tagpass]
         topic = ["{{ .Values.mqttServices.internet.topicPrefix }}*"]
@@ -103,7 +103,7 @@ data:
     [[processors.converter]]
       order = 11
       alias = "internet-converter"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       [processors.converter.fields]
         float = ["value"]
       [processors.converter.tagpass]
@@ -119,7 +119,7 @@ data:
     [[processors.override]]
       order = 20
       alias = "airQuality-override"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       name_override = {{ .Values.mqttServices.airQuality.measurementName | quote }}
       [processors.override.tagpass]
         topic = ["{{ .Values.mqttServices.airQuality.topicPrefix }}*"]
@@ -127,7 +127,7 @@ data:
     [[processors.converter]]
       order = 21
       alias = "airQuality-converter"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       [processors.converter.fields]
         float = ["value"]
       [processors.converter.tagpass]
@@ -141,7 +141,7 @@ data:
     [[processors.override]]
       order = 30
       alias = "bluetooth-override"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       name_override = {{ .Values.mqttServices.bluetooth.measurementName | quote }}
       [processors.override.tagpass]
         topic = ["{{ .Values.mqttServices.bluetooth.topicPrefix }}*"]
@@ -149,7 +149,7 @@ data:
     [[processors.regex]]
       order = 31
       alias = "bluetooth-regex"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       [[processors.regex.tags]]
         key = "topic"
         pattern = "^{{ .Values.mqttServices.bluetooth.topicPrefix }}(.+)$"
@@ -161,7 +161,7 @@ data:
     [[processors.converter]]
       order = 32
       alias = "bluetooth-converter"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       tagexclude = ["topic"]
       [processors.converter.fields]
         tag = ["mac"]
@@ -177,7 +177,7 @@ data:
     [[processors.override]]
       order = 40
       alias = "motion-override"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       name_override = {{ .Values.mqttServices.motion.measurementName | quote }}
       [processors.override.tagpass]
         topic = ["{{ .Values.mqttServices.motion.topicPrefix }}*"]
@@ -185,7 +185,7 @@ data:
     [[processors.regex]]
       order = 41
       alias = "motion-regex"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       [[processors.regex.tags]]
         key = "topic"
         pattern = "^{{ .Values.mqttServices.motion.topicPrefix }}(.+)$"
@@ -197,7 +197,7 @@ data:
     [[processors.converter]]
       order = 42
       alias = "motion-converter"
-      namepass = "mqtt_consumer"
+      namepass = ["mqtt_consumer"]
       tagexclude = ["topic"]
       [processors.converter.fields]
         tag = ["room"]
