@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: mqtt-online-check
-        image: randombyte/mqtt-online-check:3.3.0
+        image: randombyte/mqtt-online-check:3.4.0
         env:
         - name: MQTT_ONLINE_CHECK_MQTT_TOPIC
           value: "{{ .Values.mqttServices.internet.topicPrefix }}connectivity"
