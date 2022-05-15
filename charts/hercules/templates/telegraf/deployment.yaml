@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: telegraf:1.21.1
+        image: telegraf:1.22.3
         volumeMounts:
           - name: config
             mountPath: /etc/telegraf
