@@ -42,7 +42,6 @@ mqttServices:
     enabled: false
     measurementName: "home-air-quality"
     topicPrefix: "Home/Air/"
-
   bluetooth:
     enabled: false
     measurementName: "home-bluetooth"
@@ -52,6 +51,12 @@ mqttServices:
     enabled: false
     measurementName: "home-motion"
     topicPrefix: "Home/Motion/"
+
+  plants:
+    enabled: false
+    measurementName: "home-plants"
+    topicPrefix: "Home/Plants/"
+    _multiLevelWildcard: true
 
 http2mqtt:
   httpPort: 9001

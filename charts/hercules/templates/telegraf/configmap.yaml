@@ -42,7 +42,11 @@ data:
       topics = [
 {{- range $key, $val := .Values.mqttServices }}
 {{- if and $val.enabled $val.measurementName }}
+{{- if $val._multiLevelWildcard }}
+        "{{ $val.topicPrefix }}#",
+{{- else }}
         "{{ $val.topicPrefix }}+",
+{{- end }}
 {{- end }}
 {{- end }}
       ]
@@ -204,4 +208,55 @@ data:
         integer = ["value"]
       [processors.converter.tagpass]
         topic = ["{{ .Values.mqttServices.motion.topicPrefix }}*"]
+{{- end }}
+
+{{- if and .Values.mqttServices.plants.enabled .Values.mqttServices.plants.measurementName }}
+    # ===========================================
+    # Plants service
+    # Extract plant name from topic, set as tag and drop topic tag
+    [[processors.override]]
+      order = 50
+      alias = "plants-override"
+      #namepass = ["mqtt_consumer"]
+      name_override = {{ .Values.mqttServices.plants.measurementName | quote }}
+      [processors.override.tagpass]
+        topic = ["{{ .Values.mqttServices.plants.topicPrefix }}*"]
+
+    [[processors.regex]]
+      order = 51
+      alias = "plants-regex"
+      #namepass = ["mqtt_consumer"]
+      [[processors.regex.tags]]
+        key = "topic"
+        pattern = "^{{ .Values.mqttServices.plants.topicPrefix }}([^/]+)/.+$"
+        replacement = "${1}"
+        result_key = "plant"
+      [[processors.regex.tags]]
+        key = "topic"
+        pattern = "^{{ .Values.mqttServices.plants.topicPrefix }}[^/]+/(.+)$"
+        replacement = "${1}"
+        result_key = "field"
+      [processors.regex.tagpass]
+        topic = ["{{ .Values.mqttServices.plants.topicPrefix }}*"]
+
+    [[processors.converter]]
+      order = 52
+      alias = "plants-converter"
+      #namepass = ["mqtt_consumer"]
+      [processors.converter.fields]
+        tag = ["plant"]
+        float = ["value"]
+      [processors.converter.tagpass]
+        topic = ["{{ .Values.mqttServices.plants.topicPrefix }}*"]
+
+    [[processors.pivot]]
+      order = 53
+      alias = "plants-pivot"
+      # Tag to use for naming the new field.
+      tag_key = "field"
+      # Field to use as the value of the new field.
+      value_key = "value"
+      tagexclude = ["topic"]
+      [processors.pivot.tagpass]
+        topic = ["{{ .Values.mqttServices.plants.topicPrefix }}*"]
 {{- end }}
