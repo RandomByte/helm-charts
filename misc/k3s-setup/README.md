@@ -33,6 +33,12 @@ curl -sfL https://get.k3s.io | K3S_URL=https://<CONTROL PLANE IP>:6443 K3S_TOKEN
 
 You can then use node [affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) to schedule some pods exclusively on a given node. See [Gigabit Nodes](#gigabit-nodes) below.
 
+## Accessing the Cluster from Outside with kubectl
+
+From the [documentation](https://docs.k3s.io/cluster-access#accessing-the-cluster-from-outside-with-kubectl):
+
+> Copy /etc/rancher/k3s/k3s.yaml on your machine located outside the cluster as ~/.kube/config. Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
+
 ## Label Nodes
 ### Gigabit Nodes
 
