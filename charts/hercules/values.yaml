@@ -64,3 +64,6 @@ http2mqtt:
 grafana:
   enabled: false
   adminPassword: "admin_password"
+
+isponsorblocktv:
+  screenId: "screen_id"

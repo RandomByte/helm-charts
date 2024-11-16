@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hercules.isponsorblocktv.fullname" . }}
+  labels:
+    {{- include "hercules.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app: hercules-isponsorblocktv
+      {{- include "hercules.selectorLabels" . | nindent 6 }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hercules-isponsorblocktv
+        {{- include "hercules.selectorLabels" . | nindent 8 }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/isponsorblocktv/configmap.yaml") . | sha256sum }}
+    spec:
+      containers:
+      - name: master
+        image: ghcr.io/dmunozv04/isponsorblocktv:v2.2.1
+        volumeMounts:
+          - name: config
+            mountPath: /app/data
+      volumes:
+      - name: config
+        configMap:
+          name: {{ include "hercules.isponsorblocktv.fullname" . }}
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - arm64
