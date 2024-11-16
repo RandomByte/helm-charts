@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mosquitto
-        image: eclipse-mosquitto:2.0.15
+        image: eclipse-mosquitto:2.0.20
         command: ["mosquitto"]
         args: ["-c", "/mosquitto-no-auth.conf"]
         ports:
