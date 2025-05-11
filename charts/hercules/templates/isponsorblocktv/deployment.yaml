@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: master
-        image: ghcr.io/dmunozv04/isponsorblocktv:v2.2.1
+        image: ghcr.io/dmunozv04/isponsorblocktv:v2.4.0
         volumeMounts:
           - name: config
             mountPath: /app/data
